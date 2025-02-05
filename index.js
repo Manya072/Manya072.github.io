@@ -1,29 +1,17 @@
-const buttonsEl = document.querySelectorAll("button");
+const containerEl = document.querySelector(".container");
 
-const inputFieldEl = document.getElementById("result");
+const btnEl = document.querySelector(".btn");
 
-for (let i = 0; i < buttonsEl.length; i++) {
-  buttonsEl[i].addEventListener("click", () => {
-    const buttonValue = buttonsEl[i].textContent;
-    if (buttonValue === "C") {
-      clearResult();
-    } else if (buttonValue === "=") {
-      calculateResult();
-    } else {
-      appendValue(buttonValue);
-    }
-  });
-}
+const popupContainerEl = document.querySelector(".popup-container");
 
-function clearResult() {
-  inputFieldEl.value = "";
-}
+const closeIconEl = document.querySelector(".close-icon");
 
-function calculateResult() {
-  inputFieldEl.value = eval(inputFieldEl.value);
-}
+btnEl.addEventListener("click", () => {
+  containerEl.classList.add("active");
+  popupContainerEl.classList.remove("active");
+});
 
-function appendValue(buttonValue) {
-  inputFieldEl.value += buttonValue;
-  //   inputFieldEl.value = inputFieldEl.value + buttonValue;
-}
+closeIconEl.addEventListener("click", () => {
+  containerEl.classList.remove("active");
+  popupContainerEl.classList.add("active");
+});
